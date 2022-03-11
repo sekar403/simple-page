@@ -34,6 +34,45 @@
     transform: rotate(360deg);
   }
 }
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  z-index: 111;
+}
+.checkbox-class {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.childinput {
+  display: flex;
+  flex-direction: column;
+  margin-left: 13px;
+  font-size: 0.85em;
+}
+.checkbox-class input {
+  margin-right: 6px;
+}
+input.form-radio {
+  filter: hue-rotate(163deg);
+}
+.checkbox-class input.form-textarea {
+  width: 100%;
+  margin-right: 0;
+  min-height: 100px;
+  border: 1px solid #e0dfdf;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.checkbox-class label {
+  margin-bottom: 7px;
+}
 .bg-primary{
   background-color: #ff5a43;
 }
