@@ -1,41 +1,71 @@
 import React from 'react'
+import {useState} from 'react'
+import Modal from './Modal';
+import Backdrop from './Backdrop';
 
-class Counter extends React.Component {
-    constructor (props) {
-      super(props);
-      this.state = { counter : props.val }
-    } 
+
   
-    render() {
-      var x = this;
-      var { counter } = this.state;
-      
-      
-      setTimeout(function() {
-        if (counter > 0) {
-          x.setState({ counter: counter - 1 });
-        }
-      }, 1000);
-      var minCounter = Math.floor(counter/60);
+  function Timer (){
+    const [seconds, setSeconds] = React.useState(600);
+    const [times, setTimes] = React.useState();
+    const [ timerStop, setSession ] = useState(true);
+
+    React.useEffect(() => {
+
+
+          var minCounter = Math.floor(seconds/60);
+          var secCounter =  seconds%60;
+
+      if (seconds >= 0 && timerStop === true) {
+        setTimeout(() => {
+          setSeconds(seconds - 1);
+
       if(minCounter < 10){
           minCounter = '0' + minCounter;
       }
-      var secCounter =  counter%60;
       if( secCounter < 10){
         secCounter = '0' + secCounter;
       }
+      setTimes(minCounter+":"+secCounter);
+        
+        }, 1000);
+      } else {
+        setTimes(times);
+      }
+    });
 
-      return <div id="counterID">{minCounter} : {secCounter}</div>;
+    const [ modalIsOpen, setModalOpen ] = useState(false);
+
+    function endHandler(){
+        setModalOpen(true);
+        
     }
-  }
-  
-  class Timer extends React.Component {
-    render () {
-      return <div>
-        <Counter val={this.props.setTime} />
+    function closeModelHandler(event){
+        setModalOpen(false);
+        if(event.target.id === 'endbutton'){
+          setSession(false);
+        } 
+        
+    }
+
+
+
+
+
+
+      return (
+      <div className="App">
+      <div>
+        {times}
+        <button className="ml-2 bg-primary text-white font-bold py-2 px-4 rounded" onClick={endHandler}>End Class</button>
       </div>
-      ;
-    }
+      <div>
+    {modalIsOpen && <Modal onClick={closeModelHandler}/>}
+    {modalIsOpen && <Backdrop onClick={closeModelHandler} /> }
+    </div>
+    </div>
+      
+    );
   }
   
 

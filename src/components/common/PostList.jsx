@@ -40,8 +40,8 @@ function PostList() {
           {
               post.length ?
               post.map(post => <div className="p-4 m-3 shadow-lg hover:shadow-2xl duration-500	hover:cursor-pointer" key={post.id}> 
-              <h3 class="mb-2 text-xl font-semibold	">{post.title}</h3>
-              <p class="mb-2">{post.body}</p>
+              <h3 className="mb-2 text-xl font-semibold	">{post.title}</h3>
+              <p className="mb-2">{post.body}</p>
               </div>) : null
           }
       </div>

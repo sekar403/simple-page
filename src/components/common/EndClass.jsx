@@ -33,10 +33,7 @@ function EndClass(props) {
 
 
 
-  function submitFunction(){
-    props.onClick();
-    
-  }
+ 
 
   return (
     <div>
@@ -57,7 +54,7 @@ function EndClass(props) {
      
       </div>
       <div className="">
-        <button className='mr-2 bg-primary text-white font-bold py-2 px-4 rounded' type="submit" value="Submit" onClick={submitFunction}>End Class</button>
+        <button id="endbutton" className='mr-2 bg-primary text-white font-bold py-2 px-4 rounded' type="submit" value="Submit" onClick={props.onClick}>End Class</button>
         <button className='ml-2 bg-transparent text-primary font-semibold py-2 px-4 border border-primary  rounded' type="cancel" value="Cancel" onClick={props.onClick}>Cancel</button>
       </div>
     </div>
